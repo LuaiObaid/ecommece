@@ -1,0 +1,232 @@
+
+body,
+html {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Reset some default styles for the <navbar> element */
+.navbar {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 10px;
+  background-color: #747bff;
+ 
+}
+
+/* Style the <h2> elements within the navbar */
+.headerTwo {
+  margin: 0 15px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Style the <h1> element within the navbar */
+.headerOne {
+  margin: auto;
+  font-size: 24px;
+}
+
+/* Style the <i> element (search icon) within the navbar */
+.search {
+  margin-left: auto;
+  font-style: italic;
+  cursor: pointer;
+}
+.headerTwo:hover, .headerOne:hover, .search:hover{
+  color: rgb(225, 9, 192);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+}
+.text1{
+     text-align: center;
+     margin-bottom: 0px;
+}
+.text {
+  margin-left: 50px;
+  font-size: 20px;
+}
+.suit {
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 7px;
+  margin-left: 100px;
+  filter: grayscale(100%);
+}
+.suitContiner{
+  position: relative;
+}
+.homebtn{
+  background-color: #e9eaf8;
+  max-width: 100px;
+  padding: 10px;
+  border: 2px black solid;
+  border-radius: 7px;
+  position: absolute;
+  left: 860px;
+  top: 550px;
+  cursor: pointer;
+}
+.priceDetails{
+  background-color: #e9eaf8;
+  width: 120px;
+  max-height: 400px;
+  border-radius: 40%;
+  position: absolute;
+  top: 120px;
+  left: 990px;
+}
+.priceDetails p{
+  margin-left: 20px;
+}
+.homebtn:hover{
+  color:rgb(225, 9, 192); 
+}
+.header{
+  margin-left: 40%;
+  margin-bottom:20px;
+  color: brown;
+}
+.moreOption{
+  margin-left: 40%;
+  margin-top:40px;
+  margin-bottom: 20px;
+  color: brown;
+}
+.col-md{
+  margin-left: 20px;
+}
+.colImg{
+  width: 300px;
+  height: 400px;
+  border-radius: 7px;
+}
+.li{
+  margin: 20px;
+  list-style: none;
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
+  
+}
+.addBtn{
+  padding: 6px;
+  margin-left: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #747bff;
+  margin-top: 3px;
+}
+.PurchaseBtn{
+  color: black;
+  background-color: brown;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 10px 600px;
+  padding: 10px;
+  width: 20%;
+}
+.addBtn:hover{
+  color:rgb(225, 9, 192); 
+}
+.PurchaseBtn:hover{
+  color: rgb(225, 9, 192);
+}
+.span{
+  font-size: 15px;
+  margin: 15px;
+}
+.active {
+  border: 2px solid rgb(183, 8, 163);
+  background-color:rgb(183, 8, 163) ;
+  border-radius: 7%;
+  /* Add any styling you want for the active image */
+}
+
+
+.signContainer {
+  background-color: #aaacd4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 50%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.SignUpHeader {
+  text-align: center;
+}
+.formContainer {
+  border: 2px black solid;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.2);
+  /* Adjust the last value (0.2) for desired opacity */
+  padding: 20px;
+  /* Add some padding for better spacing */
+}
+.lables{
+  font-size: 20px;
+  color: black;
+  width: 100%;
+}
+.formInput{
+  border-radius: 3px lightblue solid ;
+  padding: 5px;
+  width: 100%;
+  background-color: #aaacd4;
+}
+
+.formContainer .h5{
+  color: black;
+  cursor: pointer;
+  margin-top: 5px;
+  text-decoration: none;
+}
+.formContainer .submit{
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: rgb(86, 48, 52);
+}
+.formContainer .h5:hover,.formContainer .submit:hover{
+    color: rgb(222, 5, 27);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+ 
+}
