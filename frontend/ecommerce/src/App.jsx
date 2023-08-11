@@ -1,4 +1,4 @@
-import "./App.css";
+import React, { useState } from "react"; // Import React and useState
 import {
   createBrowserRouter,
   Route,
@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import MenClothesSection from "./pages/menClothes";
 import WomenClothesSection from "./pages/womenClothes";
@@ -17,6 +16,9 @@ import Home from "./pages/Home";
 import NotFound from "./pages/notFound";
 import RootLayout from "./components/rootlayout";
 
+
+export const Context = React.createContext();
+export const CartContext = React.createContext();
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
@@ -29,8 +31,21 @@ const router = createBrowserRouter(
     </Route>
   )
 );
+
 function App() {
-  return <RouterProvider router={router} />;
+  const [isLoggedInOrSignedUp, setisLoggedInOrSignedUp] = useState(false);
+   const [cartItems, setCartItems] = useState([]);
+  return (
+    <div>
+      <CartContext.Provider value={ [cartItems, setCartItems]}>
+        <Context.Provider
+          value={[isLoggedInOrSignedUp, setisLoggedInOrSignedUp]}
+        >
+          <RouterProvider router={router} />
+        </Context.Provider>
+      </CartContext.Provider>
+    </div>
+  );
 }
 
 export default App;

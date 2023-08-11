@@ -86,11 +86,12 @@ html {
   max-height: 400px;
   border-radius: 40%;
   position: absolute;
-  top: 120px;
+  top: 190px;
   left: 990px;
 }
 .priceDetails p{
-  margin-left: 20px;
+  margin-left: 35px;
+  margin-top: 9px;
 }
 .homebtn:hover{
   color:rgb(225, 9, 192); 
@@ -216,8 +217,16 @@ html {
   padding: 5px;
   background-color: rgb(86, 48, 52);
 }
-.formContainer .h5:hover,.formContainer .submit:hover{
+.formContainer .h5:hover,.formContainer .submit:hover, .logout:hover{
     color: rgb(222, 5, 27);
+}
+.logout {
+    padding: 6px;
+    border-radius: 7px;
+    margin-left: 1300px;
+    margin-top: 20px;
+    width: 80px;
+    background: #747bff;
 }
 
 @media (prefers-color-scheme: light) {

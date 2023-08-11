@@ -1,34 +1,44 @@
 import React from "react";
-import ImageSlider from "./ImageSlider";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+const ImageSlider = ({ items, handleAddToCart }) => {
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
 
-const Clothes = ({ title, items, handleAddToCart }) => {
   return (
-    <div>
-      <h1 className="header">{title}</h1>
-      <div className="container-fluid px-3">
-        <div className="row gx-3">
-          {items.map((item, index) => (
-            <div className="col-md" key={index}>
-              <div className="column-content">
-                <img src={item.image} alt={item.name} className="colImg" />
-                <span>{item.name}</span>
-                <br />
-                <span>{item.price}</span>
-                <button
-                  className="addBtn"
-                  onClick={() => handleAddToCart(item)}
-                >
-                  add to cart
-                </button>
-              </div>
-            </div>
-          ))}
+    <Carousel responsive={responsive}>
+      {items.map((item, index) => (
+        <div className="col-md" key={index}>
+          <div className="column-content">
+            <img src={item.image} alt={item.name} className="colImg" />
+            <span>{item.name}</span>
+            <br />
+            <span>{item.price}</span>
+            <button className="addBtn" onClick={() => handleAddToCart(item)}>
+              add to cart
+            </button>
+          </div>
         </div>
-      </div>
-      <h1 className="moreOption">more options</h1>
-      <ImageSlider handleAddToCart={handleAddToCart} />
-    </div>
+      ))}
+    </Carousel>
   );
 };
 
-export default Clothes;
+export default ImageSlider;

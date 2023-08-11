@@ -1,7 +1,9 @@
 import Suit from "../assets/suit.jpg";
+import LogOut from "./logOut"
 const Home = () => {
   return (
     <>
+     <LogOut/>
       <h2 className="text1">the pure silky suit</h2>
       <div className="container">
         <div>
