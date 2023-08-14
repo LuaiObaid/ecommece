@@ -27,8 +27,8 @@ const ImageSlider = ({ items, handleAddToCart }) => {
       {items.map((item, index) => (
         <div className="col-md" key={index}>
           <div className="column-content">
-            <img src={item.image} alt={item.name} className="colImg" />
-            <span>{item.name}</span>
+            <img src={item.image} alt={item.title} className="colImg" />
+            <span>{item.title}</span>
             <br />
             <span>{item.price}</span>
             <button className="addBtn" onClick={() => handleAddToCart(item)}>

@@ -15,7 +15,7 @@ import Login from "./pages/logIn";
 import Home from "./pages/Home";
 import NotFound from "./pages/notFound";
 import RootLayout from "./components/rootlayout";
-
+import Welcomeback from "./pages/welcomeBack";
 
 export const Context = React.createContext();
 export const CartContext = React.createContext();
@@ -27,6 +27,7 @@ const router = createBrowserRouter(
       <Route path="Women" element={<WomenClothesSection />} />
       <Route path="Signup" element={<Signup />} />
       <Route path="Login" element={<Login />} />
+      <Route path="welcomeBack" element={<Welcomeback />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

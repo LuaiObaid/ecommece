@@ -11,7 +11,7 @@ const Clothes = ({ title, items, handleAddToCart }) => {
             <div className="col-md" key={index}>
               <div className="column-content">
                 <img src={item.image} alt={item.name} className="colImg" />
-                <span>{item.name}</span>
+                <span>{item.title}</span>
                 <br />
                 <span>{item.price}</span>
                 <button

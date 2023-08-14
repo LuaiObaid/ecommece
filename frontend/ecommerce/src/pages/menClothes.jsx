@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import BlueTshirt from "../assets/blueT.jpg";
 import Brwonshorts from "../assets/brwonshorts.jpg";
 import Cap from "../assets/cap.jpg";
@@ -11,26 +11,37 @@ import OversizdT from "../assets/oversizedT.jpg";
 import Shirt from "../assets/shirt.jpg";
 import ImageSlider from "../components/ImageSlider";
 import { Context, CartContext } from "../App";
+import { useNavigate } from "react-router-dom";
+import LogOut from "./logOut";
 const MenClothes = () => {
   const [cartItems, setCartItems] = useContext(CartContext);
   const [isLoggedInOrSignedUp, setisLoggedInOrSignedUp] = useContext(Context);
+  const [menItems3, setMenItems3] = useState([]);
+  const navigateTo = useNavigate();
   
   const menItems = [
-    { name: "Fashion Jeans", price: "199,00kr.", image: BlueTshirt },
-    { name: "Fashion Shorts", price: "159,00kr.", image: Brwonshorts },
-    { name: "Fashion Cap", price: "99,00kr.", image: Cap },
-    { name: "Fashion Hoody", price: "299,00kr.", image: Hoody },
+    { title: "Fashion Jeans", price: "199,00kr.", image: BlueTshirt },
+    { title: "Fashion Shorts", price: "159,00kr.", image: Brwonshorts },
+    { title: "Fashion Cap", price: "99,00kr.", image: Cap },
+    { title: "Fashion Hoody", price: "299,00kr.", image: Hoody },
   ];
   const menItems2 = [
-    { name: "Fashion Jeans", price: "199,00kr.", image: Jeans },
-    { name: "Fashion Shorts", price: "159,00kr.", image: Jumper },
-    { name: "Fashion Cap", price: "99,00kr.", image: LightBlueShirt },
-    { name: "Fashion Hoody", price: "299,00kr.", image: OversizdT },
-    { name: "Fashion Hoody", price: "299,00kr.", image: Shirt },
+    { title: "Fashion Jeans", price: "199,00kr.", image: Jeans },
+    { title: "Fashion Shorts", price: "159,00kr.", image: Jumper },
+    { title: "Fashion Cap", price: "99,00kr.", image: LightBlueShirt },
+    { title: "Fashion Hoody", price: "299,00kr.", image: OversizdT },
+    { title: "Fashion Hoody", price: "299,00kr.", image: Shirt },
   ];
+   useEffect(() => {
+     // Fetch clothing items from the API
+     fetch("https://fakestoreapi.com/products")
+       .then((response) => response.json())
+       .then((data) => setMenItems3(data));
+   }, []);
+console.log(menItems3)
 
 const handleAddToCart = (item) => {
-  const itemIndex = cartItems.findIndex((cartItem) => cartItem.name === item.name);
+  const itemIndex = cartItems.findIndex((cartItem) => cartItem.title === item.title);
   const discount = isLoggedInOrSignedUp ? 0.8 : 1; // 20% discount if signed up or logged in
 
   if (itemIndex !== -1) {
@@ -49,9 +60,21 @@ const calculateTotalPrice = (item, discount) => {
  const totalCartPrice = cartItems
    .reduce((total, item) => total + parseFloat(item.totalPrice), 0)
    .toFixed(2);
-
+  const handleLogout = () => {
+    console.log("hello");
+    setCartItems([]);
+    setisLoggedInOrSignedUp(false)
+    navigateTo("/welcomeBack");
+    
+  };
   return (
     <div>
+      {isLoggedInOrSignedUp && <LogOut onLogout={handleLogout} />}
+      <Clothes
+        title="Men Clothes"
+        items={menItems3}
+        handleAddToCart={handleAddToCart}
+      />
       <Clothes
         title="Men Clothes"
         items={menItems}
@@ -66,11 +89,11 @@ const calculateTotalPrice = (item, discount) => {
           <li key={index} className="li">
             <img
               src={item.image}
-              alt={item.name}
+              alt={item.title}
               className="colImg"
               style={{ height: "100px", width: "100px" }}
             />
-            Item: {item.name}. Price - {item.price} Quantity: {item.quantity}.
+            Item: {item.title}. Price - {item.price} Quantity: {item.quantity}.
             Total Price: {item.totalPrice}
           </li>
         ))}

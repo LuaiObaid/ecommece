@@ -11,11 +11,12 @@ import Clothes from "../components/clothes";
 import ImageSlider from "../components/ImageSlider";
 import React, { useState, useContext } from "react";
 import { Context, CartContext } from "../App";
-
+import { useNavigate } from "react-router-dom";
+import LogOut from "./logOut";
 const WomenClothes = () => {
  const [cartItems, setCartItems] = useContext(CartContext)
  const [isLoggedInOrSignedUp, setisLoggedInOrSignedUp] = useContext(Context);
- 
+ const navigateTo = useNavigate();
   const womenItems = [
     { name: "Women Suit", price: "599,00kr.", image: WomenSuit },
     { name: "Fashion pants", price: "99,00kr.", image: pants },
@@ -66,9 +67,15 @@ const WomenClothes = () => {
  const totalCartPrice = cartItems
    .reduce((total, item) => total + parseFloat(item.totalPrice), 0)
    .toFixed(2);
-
+  const handleLogout = () => {
+    console.log("hello");
+    setCartItems([]);
+    setisLoggedInOrSignedUp(false);
+    navigateTo("/welcomeBack");
+  };
   return (
     <div>
+      {isLoggedInOrSignedUp && <LogOut onLogout={handleLogout} />}
       <Clothes
         title="Women Clothes"
         items={womenItems}
